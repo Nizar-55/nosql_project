@@ -1,0 +1,35 @@
+# Configuration pour l'environnement de développement avec Neo4j
+spring:
+  # Configuration Neo4j - URL fournie par votre instance
+  neo4j:
+    uri: neo4j://127.0.0.1:7687
+    authentication:
+      username: neo4j
+      password: Islam2004  # Votre mot de passe personnalisé
+    pool:
+      max-connection-pool-size: 50
+      connection-acquisition-timeout: 30s
+      idle-time-before-connection-test: 10s
+      max-connection-lifetime: 1h
+
+# Configuration JWT
+jwt:
+  secret: VotreCleSuperSecreteQuiDoitEtreTresLongueEtComplexe123456789
+  expiration: 86400000      # 24 heures
+  refresh-expiration: 604800000  # 7 jours
+
+# Configuration upload de fichiers
+app:
+  upload:
+    dir: ./uploads/books     # Répertoire pour stocker les fichiers
+    max-size: 52428800      # 50MB en bytes
+  cors:
+    allowed-origins: http://localhost:3000,http://localhost:5173
+
+# Configuration logging pour le développement
+logging:
+  level:
+    com.library: DEBUG
+    org.springframework.security: DEBUG
+    org.neo4j.driver: DEBUG
+    org.springframework.data.neo4j: DEBUG
